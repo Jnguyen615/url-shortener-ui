@@ -6,23 +6,23 @@ import UrlForm from '../UrlForm/UrlForm';
 
 function App() {
   const [urls, setUrls] = useState([]);
-  const [error, setError] = useState('')
+  const [error, setError] = useState('');
 
   useEffect(() => {
-  getUrls()
-  .then(data => {
-    setUrls(data.urls)
-  })
-  .catch(error => {
-    setError(error)
-  })
-}, [])
+    getUrls()
+      .then(data => {
+        setUrls(data.urls);
+      })
+      .catch(error => {
+        setError(error);
+      });
+  }, []);
 
   return (
     <main className="App">
       <header>
         <h1>URL Shortener</h1>
-        <UrlForm setUrls={setUrls}/>
+        <UrlForm setUrls={setUrls} />
       </header>
 
       <UrlContainer urls={urls} />
