@@ -24,10 +24,7 @@ function UrlForm({ setUrls }) {
     setTitle('');
     setUrlToShorten('');
   }
-
-  const addNewUrl = (newUrl) => {
-
-  }
+  
 
   return (
     <form>
