@@ -1,17 +1,32 @@
 import React, { useState } from 'react';
+import { postUrls } from '../../apiCalls'
 
-function UrlForm() {
+function UrlForm({ setUrls }) {
   const [title, setTitle] = useState('');
   const [urlToShorten, setUrlToShorten] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
+
+  const newUrl = {
+    id: Date.now(),
+    title: title,
+    long_url: urlToShorten
+  }
+  postUrls(newUrl)
+  .then(response => {
+    setUrls((prevUrls) => [...prevUrls, response])
     clearInputs();
+  })
   }
 
   const clearInputs = () => {
     setTitle('');
     setUrlToShorten('');
+  }
+
+  const addNewUrl = (newUrl) => {
+
   }
 
   return (
